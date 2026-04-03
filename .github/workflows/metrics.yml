@@ -8,7 +8,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Languages Only (Vertical)
+      - name: Languages One Column
         uses: lowlighter/metrics@latest
         with:
           filename: languages.svg
@@ -17,8 +17,14 @@ jobs:
           template: classic
           base: ""
           
+          # Ограничиваем ширину, чтобы заставить элементы встать друг под другом
+          config_width: 400
+          
           plugin_languages: yes
-          # Добавляем bytes-size — это сделает строки длиннее и заставит их встать в одну колонку
+          # Явно указываем одну колонку
+          plugin_languages_columns: 1
+          # Оставляем проценты и размер кода
           plugin_languages_details: percentage, bytes-size
           plugin_languages_sections: most-used
           plugin_languages_ignored: ""
+          plugin_languages_limit: 8
