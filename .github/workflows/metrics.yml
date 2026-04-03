@@ -10,6 +10,7 @@ jobs:
     steps:
 
       # Первый файл: Подробная статистика языков и кода
+      # Обновленный блок: Подробная статистика языков и СТРОК
       - name: Full Languages & Lines
         uses: lowlighter/metrics@latest
         with:
@@ -20,16 +21,19 @@ jobs:
           base: header, activity, community, repositories, metadata
           config_timezone: Europe/Moscow
           
-          # Настройки языков
-          plugin_languages: yes
-          plugin_languages_ignored: html, css # Убираем верстку, чтобы видеть реальный код
-          plugin_languages_details: bytes-size, percentage, lines # Байты, проценты и СТРОКИ
-          plugin_languages_sections: most-used
-          plugin_languages_indepth: yes # Глубокий анализ кода (для точности строк)
-          plugin_languages_limit: 8
-          
-          # Общая статистика строк
+          # 1. ВКЛЮЧАЕМ ОБЩИЙ СЧЕТЧИК СТРОК (появится в заголовке)
           plugin_lines: yes
+
+          # 2. НАСТРОЙКИ ЯЗЫКОВ С ДЕТАЛИЗАЦИЕЙ СТРОК
+          plugin_languages: yes
+          plugin_languages_ignored: html, css, scss, liquid # Игнорируем разметку
+          # Явно просим: байты, проценты и строки
+          plugin_languages_details: bytes-size, percentage, lines 
+          plugin_languages_sections: most-used
+          plugin_languages_indepth: yes # ОЧЕНЬ ВАЖНО: без этого строки не считаются
+          plugin_languages_limit: 8
+          plugin_languages_analysis_timeout: 15 # Даем больше времени на расчет
+
 
       # Второй файл: Изометрический (3D) календарь
       - name: Isometric Calendar
