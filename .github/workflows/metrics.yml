@@ -1,0 +1,19 @@
+name: Metrics
+on:
+  schedule: [{cron: "0 0 * * *"}] # Обновлять каждый день в полночь
+  workflow_dispatch: # Позволяет запустить вручную
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: ТВОЙ_ЛОГИН_ГИТХАБА
+          template: classic
+          base: header, activity, community, repositories, metadata
+          config_timezone: Europe/Moscow
+          plugin_languages: yes
+          plugin_languages_ignored: html, css # Игнорируем мелочь, если хочешь только Python/C++
+          plugin_languages_details: bytes-size, percentage
+          plugin_languages_limit: 8
