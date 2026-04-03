@@ -8,7 +8,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Languages One Column
+      - name: Code Volume (Lines)
         uses: lowlighter/metrics@latest
         with:
           filename: languages.svg
@@ -17,14 +17,20 @@ jobs:
           template: classic
           base: ""
           
-          # Ограничиваем ширину, чтобы заставить элементы встать друг под другом
-          config_width: 400
-          
+          # 1. ВКЛЮЧАЕМ ОБЩИЙ СЧЕТЧИК СТРОК (появится над списком языков)
+          plugin_lines: yes
+
+          # 2. НАСТРОЙКИ ЯЗЫКОВ С ДЕТАЛИЗАЦИЕЙ СТРОК
           plugin_languages: yes
-          # Явно указываем одну колонку
-          plugin_languages_columns: 1
-          # Оставляем проценты и размер кода
-          plugin_languages_details: percentage, bytes-size
+          # Заменяем bytes-size на lines
+          plugin_languages_details: percentage, lines 
           plugin_languages_sections: most-used
+          
+          # ОЧЕНЬ ВАЖНО: включаем глубокий анализ, чтобы он считал именно строки
+          plugin_languages_indepth: yes 
+          
+          # Даем плагину больше времени, так как считать строки в приватных репозиториях дольше
+          plugin_languages_analysis_timeout: 15 
+          
           plugin_languages_ignored: ""
           plugin_languages_limit: 8
