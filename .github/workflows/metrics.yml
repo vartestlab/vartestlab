@@ -26,3 +26,6 @@ jobs:
           plugin_languages_details: percentage
           # Убираем игнор-лист, теперь HTML и CSS будут считаться!
           plugin_languages_ignored: ""
+          # Добавляем bytes-size — это сделает строки длиннее и заставит их встать в одну колонку
+          plugin_languages_details: percentage, bytes-size
+          plugin_languages_sections: most-used
