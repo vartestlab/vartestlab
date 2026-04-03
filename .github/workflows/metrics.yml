@@ -1,31 +1,24 @@
 name: Metrics
 on:
-  schedule: [{cron: "0 0 * * *"}] # Обновление раз в сутки
-  workflow_dispatch: # Ручной запуск
+  schedule: [{cron: "0 0 * * *"}]
+  workflow_dispatch:
 jobs:
   github-metrics:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - name: Languages Only
+      - name: Languages Only (Vertical)
         uses: lowlighter/metrics@latest
         with:
-          # Имя файла, который будет создаваться
           filename: languages.svg
           token: ${{ secrets.METRICS_TOKEN }}
           user: vartestlab
           template: classic
-          
-          # Отключаем ВСЮ базовую статистику (шапку, коммиты, репозитории и т.д.)
           base: ""
           
-          # Включаем плагин языков
           plugin_languages: yes
-          # Оставляем только проценты (чтобы было лаконично)
-          plugin_languages_details: percentage
-          # Убираем игнор-лист, теперь HTML и CSS будут считаться!
-          plugin_languages_ignored: ""
           # Добавляем bytes-size — это сделает строки длиннее и заставит их встать в одну колонку
           plugin_languages_details: percentage, bytes-size
           plugin_languages_sections: most-used
+          plugin_languages_ignored: ""
