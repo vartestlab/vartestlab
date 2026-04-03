@@ -33,6 +33,10 @@ jobs:
           plugin_languages_indepth: yes # ОЧЕНЬ ВАЖНО: без этого строки не считаются
           plugin_languages_limit: 8
           plugin_languages_analysis_timeout: 15 # Даем больше времени на расчет
+          
+          plugin_languages_recent_load: 1000    # Загружать больше последних событий
+          plugin_languages_recent_days: 14      # Искать активность за последние 14 дней
+          repositories_affiliations: owner      # Считать только те репозитории, где ты владелец
 
 
       # Второй файл: Изометрический (3D) календарь
