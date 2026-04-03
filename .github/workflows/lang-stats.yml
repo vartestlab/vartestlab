@@ -1,0 +1,49 @@
+name: Language Stats
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+
+      - name: Install deps
+        run: pip install requests
+
+      - name: Run script
+        run: python .github/scripts/languages_stats.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN }}
+          GITHUB_USER: vartestlab
+
+      - name: Update README
+        run: |
+          START="<!-- LANG_STATS_START -->"
+          END="<!-- LANG_STATS_END -->"
+
+          CONTENT=$(cat LANG_STATS.md)
+
+          awk -v start="$START" -v end="$END" -v new="$CONTENT" '
+          BEGIN {p=1}
+          $0 ~ start {print; print new; p=0; next}
+          $0 ~ end {p=1}
+          p {print}
+          ' README.md > README.tmp
+
+          mv README.tmp README.md
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add README.md
+          git commit -m "update language stats" || exit 0
+          git push
