@@ -13,7 +13,15 @@ Here are some ideas to get you started:
 - 📫 How to reach me: ...
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
+
+
+![GitHub Metrics]github-metrics.svg)
 -->
 
 
-![GitHub Metrics](github-metrics.svg)
+
+### Статистика
+![Languages](github-metrics.svg)
+
+### Активность
+![Isometric Calendar](github-isocalendar.svg)
