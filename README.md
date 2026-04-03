@@ -22,6 +22,3 @@ Here are some ideas to get you started:
 
 ### Статистика
 ![Languages](github-metrics.svg)
-
-### Активность
-![Isometric Calendar](github-isocalendar.svg)
