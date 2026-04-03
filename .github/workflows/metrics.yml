@@ -8,7 +8,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Full Languages & Lines
+      - name: Code Volume (Lines)
         uses: lowlighter/metrics@latest
         with:
           filename: languages.svg
@@ -17,27 +17,17 @@ jobs:
           template: classic
           base: ""
           
-          # Указываем автора для счетчика строк (используем секрет для почты)
           commits_authoring: vartestlab, ${{ secrets.MY_GIT_EMAIL }}
-          
-          # Считаем только твои репозитории
           repositories_affiliations: owner
 
-          # 1. ОБЩИЙ СЧЕТЧИК СТРОК (всего за всю историю)
           plugin_lines: yes
 
-          # 2. АНАЛИЗ ЯЗЫКОВ ПО ВСЕМУ ТЕКУЩЕМУ КОДУ
           plugin_languages: yes
-          plugin_languages_indepth: yes # ВКЛЮЧАЕМ глубокий анализ файлов
-          
-          # ВАЖНО: Убираем параметры recent_days и recent_load, 
-          # чтобы он не ограничивался только последними днями.
-          
           plugin_languages_details: percentage, lines 
-          plugin_languages_sections: most-used # Сортировка по общему объему
+          plugin_languages_sections: most-used
           
-          # Даем больше времени, так как сканирование ВСЕГО кода требует ресурсов
-          plugin_languages_analysis_timeout: 30 
+          # ОТКЛЮЧАЕМ глубокий анализ. Теперь он переведет байты в строки!
+          # plugin_languages_indepth: yes 
           
           plugin_languages_ignored: ""
           plugin_languages_limit: 8
