@@ -39,15 +39,3 @@ jobs:
           repositories_affiliations: owner      # Считать только те репозитории, где ты владелец
 
 
-      # Второй файл: Изометрический (3D) календарь
-      - name: Isometric Calendar
-        uses: lowlighter/metrics@latest
-        with:
-          filename: github-isocalendar.svg
-          token: ${{ secrets.METRICS_TOKEN }}
-          user: vartestlab
-          template: classic
-          base: "" # Оставляем пустым, чтобы был только календарь
-          config_timezone: Europe/Moscow
-          plugin_isocalendar: yes
-          plugin_isocalendar_duration: half-year # Показывает последние полгода (выглядит лучше всего)
