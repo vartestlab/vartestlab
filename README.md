@@ -4,8 +4,9 @@
 <!-- LANG_STATS_START -->
 ## 📊 My Code Stats
 
-- Python: 8,167 lines
-- HTML: 3,319 lines
-- Shell: 335 lines
+- Python: 8,297 lines
+- HTML: 3,340 lines
+- JavaScript: 1,209 lines
+- Shell: 340 lines
 - Lua: 209 lines
 <!-- LANG_STATS_END -->
