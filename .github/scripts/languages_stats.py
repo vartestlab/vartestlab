@@ -10,7 +10,7 @@ HEADERS = {
 }
 
 # средняя длина строки (можешь менять)
-AVG_CHARS_PER_LINE = 40
+AVG_CHARS_PER_LINE = 30
 
 def get_repos():
     repos = []
