@@ -4,12 +4,12 @@
 <!-- LANG_STATS_START -->
 ## 📊 My Code Stats
 
-- Python: 14,824 lines
-- HTML: 3,579 lines
-- JavaScript: 2,506 lines
-- C++: 2,224 lines
-- C: 836 lines
-- Shell: 404 lines
-- Lua: 209 lines
-- CSS: 52 lines
+- Python: 19,765 lines
+- HTML: 4,772 lines
+- JavaScript: 3,341 lines
+- C++: 2,966 lines
+- C: 1,115 lines
+- Shell: 539 lines
+- Lua: 278 lines
+- CSS: 70 lines
 <!-- LANG_STATS_END -->
